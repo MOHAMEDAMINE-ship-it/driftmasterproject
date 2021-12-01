@@ -1,0 +1,13 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Vihecule{% endblock %}
+
+{% block body %}
+    <h1>Edit Vihecule</h1>
+
+    {{ include('vihecule/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('vihecule_index') }}">back to list</a>
+
+    {{ include('vihecule/_delete_form.html.twig') }}
+{% endblock %}

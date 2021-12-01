@@ -1,0 +1,69 @@
+{% extends 'base.front.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+
+    <h1>Produit index</h1>
+    <br><br><br>
+    <br><br><br>
+
+    <table class="table">
+    <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+<input type="text" id="search" class="form-control form-control-no-border mr-sm-2" placeholder="chercher produit" onkeyup="myFunction()">
+<table class="table table-bordered dataTable" id="table" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Description</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.marque }}</td>
+                <td>{{ produit.type }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.description }}</td>
+               
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script>
+   function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("search");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+    
+{% endblock %}

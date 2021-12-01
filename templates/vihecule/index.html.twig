@@ -1,0 +1,41 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Vihecule index{% endblock %}
+
+{% block body %}
+    <h1>Vihecule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Puissance</th>
+                <th>Consommation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vihecule in vihecules %}
+            <tr>
+                <td>{{ vihecule.id }}</td>
+                <td>{{ vihecule.nom }}</td>
+                <td>{{ vihecule.marque }}</td>
+                <td>{{ vihecule.Puissance }}</td>
+                <td>{{ vihecule.consommation }}</td>
+                <td>
+                    <a href="{{ path('vihecule_show', {'id': vihecule.id}) }}">show</a>
+                    <a href="{{ path('vihecule_edit', {'id': vihecule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vihecule_new') }}">Create new</a>
+{% endblock %}

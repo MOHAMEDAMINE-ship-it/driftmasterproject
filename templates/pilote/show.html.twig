@@ -1,0 +1,34 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Pilote{% endblock %}
+
+{% block body %}
+    <h1>Pilote</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pilote.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ pilote.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ pilote.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ pilote.age }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('pilote_index') }}">back to list</a>
+
+    <a href="{{ path('pilote_edit', {'id': pilote.id}) }}">edit</a>
+
+    {{ include('pilote/_delete_form.html.twig') }}
+{% endblock %}
